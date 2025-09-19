@@ -10,7 +10,7 @@ load_dotenv()
 
 # API keys
 openai.api_key = os.getenv("OPENAI_API_KEY")
-TOKEN = os.getenv("TELEGRAM_TOKEN")
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 # Start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
