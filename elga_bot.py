@@ -36,7 +36,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         answer = chat_completion.choices[0].message.content
     except Exception as e:
-        answer = "Кечирасиз, ҳозирча AI жавоб бера олмади."
+        answer = "ELGA TAXI MILOZLAR ILOVASINI YUKLAB OLING https://play.google.com/store/apps/details?id=uz.teamwork.elgataxi."
     await update.message.reply_text(answer)
 
 # Bot runner
