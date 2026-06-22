@@ -1,0 +1,15 @@
+# Render blueprint — ELGA TAXI Telegram bot (long-polling worker)
+# Maxfiy kalitlar Render dashboard'da to'ldiriladi (sync:false).
+services:
+  - type: worker
+    name: elga-bot
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python elga_bot.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      # OPENAI_API_KEY ixtiyoriy — bo'lmasa bot AI'siz, faqat buyruqlar bilan ishlaydi
+      - key: OPENAI_API_KEY
+        sync: false

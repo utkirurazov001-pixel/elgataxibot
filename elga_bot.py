@@ -1,6 +1,6 @@
-import openai
 import os
 from dotenv import load_dotenv
+from openai import AsyncOpenAI
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
@@ -12,7 +12,9 @@ load_dotenv()
 # API keys
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-openai.api_key = OPENAI_API_KEY
+
+# OpenAI mijozi — kalit bo'lmasa AI o'chiriladi (bot baribir ishlayveradi)
+ai_client = AsyncOpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 
 # /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -75,16 +77,23 @@ async def partner_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
 
+    if ai_client is None:
+        await update.message.reply_text(
+            "ℹ️ Буйруқлар: /start /app /info /call /partner\n"
+            "📞 Диспетчер: 1226"
+        )
+        return
+
     try:
-        response = await openai.ChatCompletion.acreate(
-            model="gpt-3.5-turbo",
+        response = await ai_client.chat.completions.create(
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "Сиз фойдаланувчиларга ёрдам берувчи AI ёрдамчисиз."},
                 {"role": "user", "content": user_message}
             ]
         )
         answer = response.choices[0].message.content
-    except Exception as e:
+    except Exception:
         answer = "Кечирасиз, ҳозирча AI жавоб бера олмади."
 
     await update.message.reply_text(answer)
