@@ -21,6 +21,9 @@ export const LINKS = {
   playStore: process.env.PLAY_STORE_URL || "https://ketdikgo.uz",
   appStore: process.env.APP_STORE_URL || "https://ketdikgo.uz",
   dispatcherPhone: process.env.DISPATCHER_PHONE || "1226",
+  // Sayt (jonli landing) va Maxfiylik siyosati — ketdikgo.uz'da nashr qilingan.
+  site: process.env.SITE_URL || "https://ketdikgo.uz",
+  privacy: process.env.PRIVACY_URL || "https://ketdikgo.uz/privacy",
 };
 
 // Foydalanuvchi bilan muloqot tili (kelajakda "ru" qo'shiladi)
@@ -54,7 +57,8 @@ export const TEXTS = {
       `• Oldindan aniq narx — safar oldidan bilasiz\n` +
       `• ${BRAND.region} tumanlari\n` +
       `• Ishonchli haydovchilar\n\n` +
-      `🌐 ${BRAND.domain}`,
+      `🌐 ${BRAND.domain}\n` +
+      `📄 Maxfiylik: ${BRAND.domain}/privacy`,
 
     fallback:
       `Buyurtma uchun /buyurtma buyrug'ini yuboring yoki quyidagi tugmalardan foydalaning 👇`,
