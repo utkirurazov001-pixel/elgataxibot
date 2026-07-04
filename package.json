@@ -1,0 +1,17 @@
+{
+  "name": "ketdikgo-bot",
+  "version": "1.0.0",
+  "description": "KetdikGo — Telegram yo'naltiruvchi bot (Belgila. Ko'r. Ketdik.)",
+  "type": "module",
+  "main": "bot.js",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "dotenv": "16.4.5",
+    "telegraf": "4.16.3"
+  }
+}

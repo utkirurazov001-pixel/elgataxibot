@@ -1,15 +1,28 @@
-# Render blueprint — ELGA TAXI Telegram bot (long-polling worker)
+# Render blueprint — KetdikGo Telegram bot (long-polling Background Worker)
 # Maxfiy kalitlar Render dashboard'da to'ldiriladi (sync:false).
+#
+# Bot repo ILDIZIDA (root). Render Background Worker:
+#   Build Command : npm ci
+#   Start Command : npm start   ← faqat Node.js botni ishga tushiradi (Python EMAS)
+# Eski Python bot `eski_python/` papkasida saqlangan (ishlamaydi, deploy qilinmaydi).
 services:
   - type: worker
-    name: elga-bot
-    runtime: python
+    name: ketdikgo-bot
+    runtime: node
     plan: starter
-    buildCommand: pip install -r requirements.txt
-    startCommand: python elga_bot.py
+    buildCommand: npm ci
+    startCommand: npm start
+    autoDeploy: true
     envVars:
-      - key: TELEGRAM_BOT_TOKEN
+      - key: NODE_VERSION
+        value: "20"
+      # @BotFather'dan olingan token (MAJBURIY)
+      - key: BOT_TOKEN
         sync: false
-      # OPENAI_API_KEY ixtiyoriy — bo'lmasa bot AI'siz, faqat buyruqlar bilan ishlaydi
-      - key: OPENAI_API_KEY
+      # Ixtiyoriy — bo'lmasa config.js standart qiymati ishlatiladi
+      - key: PLAY_STORE_URL
+        sync: false
+      - key: APP_STORE_URL
+        sync: false
+      - key: DISPATCHER_PHONE
         sync: false
