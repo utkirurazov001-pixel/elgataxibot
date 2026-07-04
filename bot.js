@@ -14,11 +14,14 @@ import "dotenv/config";
 import { Telegraf, Markup } from "telegraf";
 import { BRAND, LINKS, t } from "./config.js";
 
-const TOKEN = process.env.BOT_TOKEN;
+// Token: asosiy nom BOT_TOKEN. Mavjud Render sozlamasida (eski botdan) TELEGRAM_BOT_TOKEN
+// bo'lishi mumkin — uni ham qabul qilamiz, shunda yangi env o'zgaruvchisi shart emas.
+// DIQQAT: bu qiymat @ketdikgobot tokeni bo'lishi kerak (bot shu identitet bilan ishlaydi).
+const TOKEN = process.env.BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN;
 if (!TOKEN) {
   console.error(
-    "❌ BOT_TOKEN yo'q. .env faylida BOT_TOKEN=... qo'ying (@BotFather'dan oling).\n" +
-    "   Namuna uchun: cp .env.example .env"
+    "❌ Token yo'q. BOT_TOKEN (yoki TELEGRAM_BOT_TOKEN) env o'zgaruvchisini qo'ying " +
+    "(@BotFather'dan oling).\n   Namuna uchun: cp .env.example .env"
   );
   process.exit(1);
 }

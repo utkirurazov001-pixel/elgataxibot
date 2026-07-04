@@ -71,7 +71,7 @@ Ishga tushganda log: `✅ KetdikGo bot ishga tushdi — "Belgila. Ko'r. Ketdik."
 
 | Qiymat | Hozirgi (standart) | To'ldirilsin |
 |---|---|---|
-| `BOT_TOKEN` | — (majburiy) | @BotFather token |
+| `BOT_TOKEN` | — (majburiy; `TELEGRAM_BOT_TOKEN` ham qabul qilinadi) | @ketdikgobot tokeni (@BotFather) |
 | `PLAY_STORE_URL` | `https://ketdikgo.uz` | Play Store'da chiqqach to'liq havola (masalan `https://play.google.com/store/apps/details?id=uz.ketdik.mijoz`) |
 | `APP_STORE_URL` | `https://ketdikgo.uz` | iOS App Store havolasi (ixtiyoriy) |
 | `DISPATCHER_PHONE` | `1226` | Haqiqiy dispetcher raqami |
